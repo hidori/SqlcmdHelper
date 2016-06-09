@@ -36,10 +36,18 @@ namespace Mjollnir.Testing.Helpers
     using System.Linq;
 
     /// <summary>
-    /// Helps SQLCMD.exe automation.
+    /// Helps sqlcmd.exe automation.
     /// </summary>
     public class SqlcmdHelper
     {
+        /// <summary>
+        /// Initializes a new instance of the TcpClient class with the specified parametters.
+        /// </summary>
+        /// <param name="path">The path of a sqlcmd.exe file.</param>
+        /// <param name="server">The name or network address of the instance of SQL Server to connect to.</param>
+        /// <param name="userId">The user ID to be used when connecting to SQL Server.</param>
+        /// <param name="password">The password for the SQL Server account.</param>
+        /// <param name="database">The name of the database associated with the connection. this can be null.</param>
         public SqlcmdHelper(string path, string server, string userId, string password, string database = null)
         {
             if (path == null) throw new ArgumentNullException(nameof(path));
@@ -55,6 +63,12 @@ namespace Mjollnir.Testing.Helpers
             this.Database = database;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the TcpClient class with the specified parametters.
+        /// </summary>
+        /// <param name="path">The path of a sqlcmd.exe file.</param>
+        /// <param name="server">The name or network address of the instance of SQL Server to connect to.</param>
+        /// <param name="database">The name of the database associated with the connection. this can be null.</param>
         public SqlcmdHelper(string path, string server, string database = null)
         {
             if (path == null) throw new ArgumentNullException(nameof(path));
@@ -68,17 +82,38 @@ namespace Mjollnir.Testing.Helpers
             this.Database = database;
         }
 
+        /// <summary>
+        /// Gets the path of a sqlcmd.exe file.
+        /// </summary>
         public string ExecutablePath { get; private set; }
 
+        /// <summary>
+        /// Gets the name or network address of the instance of SQL Server to connect to.
+        /// </summary>
         public string Server { get; private set; }
 
+        /// <summary>
+        /// Gets the user ID to be used when connecting to SQL Server.
+        /// </summary>
         public string UserId { get; private set; }
 
+        /// <summary>
+        /// Gets the password for the SQL Server account.
+        /// </summary>
         public string Password { get; private set; }
 
+        /// <summary>
+        /// Gets the name of the database associated with the connection.
+        /// </summary>
         public string Database { get; private set; }
 
-        public int ExecuteQueryString(string query, string database = null)
+        /// <summary>
+        /// Execute query with specified database.
+        /// </summary>
+        /// <param name="query">The query string to be execute.</param>
+        /// <param name="database">The database name.</param>
+        /// <returns>The exit code of the sqlcmd.exe process.</returns>
+        public int ExecuteQueryString(string query, string database)
         {
             if (query == null) throw new ArgumentNullException(nameof(query));
             if (database == null) throw new ArgumentNullException(nameof(database));
@@ -86,6 +121,11 @@ namespace Mjollnir.Testing.Helpers
             return this.ExecuteQuery(() => this.CreateArguments(database).Concat(new[] { $"-Q \"{Escape(query)}\"" }));
         }
 
+        /// <summary>
+        /// Execute query with default database.
+        /// </summary>
+        /// <param name="query">The query string to be execute.</param>
+        /// <returns>The exit code of the sqlcmd.exe process.</returns>
         public int ExecuteQueryString(string query)
         {
             if (query == null) throw new ArgumentNullException(nameof(query));
@@ -93,6 +133,12 @@ namespace Mjollnir.Testing.Helpers
             return this.ExecuteQuery(() => this.CreateArguments(this.Database).Concat(new[] { $"-Q \"{Escape(query)}\"" }));
         }
 
+        /// <summary>
+        /// Execute query at specified database.
+        /// </summary>
+        /// <param name="fileName">The query filename (.sql) to be execute.</param>
+        /// <param name="database">The database name.</param>
+        /// <returns>The exit code of the sqlcmd.exe process.</returns>
         public int ExecuteQueryFile(string fileName, string database)
         {
             if (fileName == null) throw new ArgumentNullException(nameof(fileName));
@@ -101,6 +147,11 @@ namespace Mjollnir.Testing.Helpers
             return this.ExecuteQuery(() => this.CreateArguments(database).Concat(new[] { $"-i \"{fileName}\"" }));
         }
 
+        /// <summary>
+        /// Execute query with default database.
+        /// </summary>
+        /// <param name="fileName">The query filename (.sql) to be execute.</param>
+        /// <returns>The exit code of the sqlcmd.exe process.</returns>
         public int ExecuteQueryFile(string fileName)
         {
             if (fileName == null) throw new ArgumentNullException(nameof(fileName));

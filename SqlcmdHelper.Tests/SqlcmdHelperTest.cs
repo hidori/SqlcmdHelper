@@ -176,11 +176,11 @@ namespace Mjollnir.Testing.Helpers.Tests
                 var target = new SqlcmdHelper(path, server, userId, password);
 
                 var appDataDirecotryPath = Path.GetFullPath(Path.Combine(Config.ProjectDirectoryPath, "App_Data"));
-                var insertIntoFilePath = Path.Combine(appDataDirecotryPath, "crate_database.sql");
+                var insertIntoFilePath = Path.Combine(appDataDirecotryPath, "insert_into.sql");
 
                 target.ExecuteQueryString($"CREATE DATABASE {database}");
                 target.ExecuteQueryString($"CREATE TABLE [dbo].[People]([Id] [bigint] NOT NULL, [Name] [nvarchar](50) NOT NULL)", database);
-                target.ExecuteQueryString(insertIntoFilePath, database);
+                target.ExecuteQueryFile(insertIntoFilePath, database);
 
                 var connectionString = $"Data Source={server};Initial Catalog={database};User Id={userId};Password={password};Pooling=False";
 
@@ -220,11 +220,11 @@ namespace Mjollnir.Testing.Helpers.Tests
                 var target = new SqlcmdHelper(path, server);
 
                 var appDataDirecotryPath = Path.GetFullPath(Path.Combine(Config.ProjectDirectoryPath, "App_Data"));
-                var insertIntoFilePath = Path.Combine(appDataDirecotryPath, "crate_database.sql");
+                var insertIntoFilePath = Path.Combine(appDataDirecotryPath, "insert_into.sql");
 
                 target.ExecuteQueryString($"CREATE DATABASE {database}");
                 target.ExecuteQueryString($"CREATE TABLE [dbo].[People]([Id] [bigint] NOT NULL, [Name] [nvarchar](50) NOT NULL)", database);
-                target.ExecuteQueryString(insertIntoFilePath, database);
+                target.ExecuteQueryFile(insertIntoFilePath, database);
 
                 var connectionString = $"Data Source={server};Initial Catalog={database};Integrated Security=True;Pooling=False";
 

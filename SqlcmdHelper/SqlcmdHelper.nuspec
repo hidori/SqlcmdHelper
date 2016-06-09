@@ -8,7 +8,11 @@
     <licenseUrl>https://raw.githubusercontent.com/hidori/SqlcmdHelper/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/hidori/SqlcmdHelper</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+<<<<<<< bfb86953e77799356f0e19de88fea4bd1f036e05
     <description>IIS Express Helper for unit testing.</description>
+=======
+    <description>Helps sqlcmd.exe automation.</description>
+>>>>>>> Added initial project
     <copyright>Copyright (c) 2016 Hiroaki SHIBUKI a.k.a. hidori</copyright>
     <tags>Mjollnir Testing Sqlcmd</tags>
   </metadata>
