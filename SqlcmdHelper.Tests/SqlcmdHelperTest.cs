@@ -14,9 +14,9 @@ namespace Mjollnir.Testing.Helpers.Tests
             public static readonly string ProjectDirectoryPath = Path.GetFullPath(Path.Combine(TestDirectoryPath, @"..\.."));
 
             public const string ExecutablePath = @"SQLCMD.EXE";
-            public const string Server = ".";
+            public const string Server = @".\SQL2014";
             public const string UserId = "sa";
-            public const string Password = "P@ssw0rd";
+            public const string Password = "Password12!";
         }
 
         [Test]
