@@ -13,10 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlcmdHelper.Tests", "Sqlcm
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{37B5B59C-89BF-4F55-A560-DF97AC555823}"
 	ProjectSection(SolutionItems) = preProject
-		config.cmd = config.cmd
 		LICENSE = LICENSE
-		NuPack.cmd = NuPack.cmd
-		NuPush.cmd = NuPush.cmd
 		README.md = README.md
 	EndProjectSection
 EndProject
