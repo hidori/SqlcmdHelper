@@ -13,7 +13,7 @@ See also [nuget.org](https://www.nuget.org/packages/SqlcmdHelper/)
 
 ## Usage
 
-### SqlcmdHelper.ExecuteQueryString()
+### Execute query (string)
 
 ```
 static class Config
@@ -42,6 +42,7 @@ static class Config
     public const string Database = "MyDatabase";
 }
 
+// Using windows authentication
 var helper = new SqlcmdHelper(Config.ExecutablePath, Config.Server);
 
 helper.ExecuteQueryString($"CREATE DATABASE {Config.Database}");
@@ -49,7 +50,7 @@ helper.ExecuteQueryString($"CREATE TABLE [dbo].[People]([Id] [bigint] NOT NULL, 
 helper.ExecuteQueryString($"INSERT INTO [dbo].[People] ([Id], [Name]) VALUES (1, 'ABC')", Config.Database);
 ```
 
-### SqlcmdHelper.ExecuteQueryFile()
+### Execute query (.sql)
 
 ```
 static class Config
@@ -78,6 +79,7 @@ static class Config
     public const string Database = "MyDatabase";
 }
 
+// Using windows authentication
 var helper = new SqlcmdHelper(Config.ExecutablePath, Config.Server);
 
 helper.ExecuteQueryFile("create_database.sql");
