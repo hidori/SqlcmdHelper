@@ -176,7 +176,7 @@ namespace Mjollnir.Testing.Helpers.Tests
                 var target = new SqlcmdHelper(path, server, userId, password);
 
                 var appDataDirecotryPath = Path.GetFullPath(Path.Combine(Config.ProjectDirectoryPath, "App_Data"));
-                var insertIntoFilePath = Path.Combine(appDataDirecotryPath, "insert_into.sql");
+                var insertIntoFilePath = Path.Combine(appDataDirecotryPath, "insert_into_people.sql");
 
                 target.ExecuteQueryString($"CREATE DATABASE {database}");
                 target.ExecuteQueryString($"CREATE TABLE [dbo].[People]([Id] [bigint] NOT NULL, [Name] [nvarchar](50) NOT NULL)", database);
@@ -220,7 +220,7 @@ namespace Mjollnir.Testing.Helpers.Tests
                 var target = new SqlcmdHelper(path, server);
 
                 var appDataDirecotryPath = Path.GetFullPath(Path.Combine(Config.ProjectDirectoryPath, "App_Data"));
-                var insertIntoFilePath = Path.Combine(appDataDirecotryPath, "insert_into.sql");
+                var insertIntoFilePath = Path.Combine(appDataDirecotryPath, "insert_into_people.sql");
 
                 target.ExecuteQueryString($"CREATE DATABASE {database}");
                 target.ExecuteQueryString($"CREATE TABLE [dbo].[People]([Id] [bigint] NOT NULL, [Name] [nvarchar](50) NOT NULL)", database);
