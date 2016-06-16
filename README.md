@@ -9,8 +9,6 @@ Helps sqlcmd.exe automation. Using SqlcmdHelper, you can execute query (string a
 PM> Install-Package SqlcmdHelper
 ```
 
-See also [nuget.org](https://www.nuget.org/packages/SqlcmdHelper/)
-
 ## Usage
 
 ### Execute query (string)
